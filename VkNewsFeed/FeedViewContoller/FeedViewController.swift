@@ -10,21 +10,15 @@ import UIKit
 class FeedViewController: UIViewController {
     
     private let networkService: NetworkingProtocol = NetworkService()
-
+    private var fetcher: DataFetcher =  NetworkDataFetcher(networking: NetworkService())
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .blue
-        let params = ["filters":  "post, photo"]
-        networkService.request(path: API.newsFeed, params: params) { data, error in
-            if let error = error {
-                print(error.localizedDescription)
+        fetcher.getFeed { feedResponse in
+            guard let feedResponse = feedResponse else { return }
+            feedResponse.items.map { feedItem in
+                print(feedItem.date)
             }
-            
-            let decoder = JSONDecoder()
-            decoder.keyDecodingStrategy = .convertFromSnakeCase
-            
-            guard let data = data else { return }
-            let response = try? decoder.decode(FeedResponseWrapped.self, from: data)
         }
     }
 

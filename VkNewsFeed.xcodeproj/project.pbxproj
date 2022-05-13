@@ -19,6 +19,7 @@
 		566FCB37282144CC00219F8F /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566FCB36282144CC00219F8F /* NetworkService.swift */; };
 		566FCB392821453100219F8F /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566FCB382821453100219F8F /* API.swift */; };
 		56D33839282E2BD200C5CC94 /* FeedResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D33838282E2BD200C5CC94 /* FeedResponse.swift */; };
+		56D3383B282E2E0A00C5CC94 /* NetworkDataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D3383A282E2E0A00C5CC94 /* NetworkDataFetcher.swift */; };
 		92FC733CB3D5806B39E4E95D /* Pods_VkNewsFeed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 610477C913BBFBC7F4A3689F /* Pods_VkNewsFeed.framework */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +40,7 @@
 		566FCB36282144CC00219F8F /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		566FCB382821453100219F8F /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		56D33838282E2BD200C5CC94 /* FeedResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedResponse.swift; sourceTree = "<group>"; };
+		56D3383A282E2E0A00C5CC94 /* NetworkDataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDataFetcher.swift; sourceTree = "<group>"; };
 		610477C913BBFBC7F4A3689F /* Pods_VkNewsFeed.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VkNewsFeed.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -102,6 +104,7 @@
 				566FCB29281B052800219F8F /* AuthService.swift */,
 				566FCB36282144CC00219F8F /* NetworkService.swift */,
 				566FCB382821453100219F8F /* API.swift */,
+				56D3383A282E2E0A00C5CC94 /* NetworkDataFetcher.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -263,6 +266,7 @@
 				566FCB33281B0F6700219F8F /* FeedViewController.swift in Sources */,
 				566FCB18281AFB4700219F8F /* SceneDelegate.swift in Sources */,
 				566FCB37282144CC00219F8F /* NetworkService.swift in Sources */,
+				56D3383B282E2E0A00C5CC94 /* NetworkDataFetcher.swift in Sources */,
 				566FCB2A281B052800219F8F /* AuthService.swift in Sources */,
 				566FCB392821453100219F8F /* API.swift in Sources */,
 			);
