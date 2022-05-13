@@ -16,6 +16,8 @@
 		566FCB2D281B078B00219F8F /* AuthViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 566FCB2C281B078B00219F8F /* AuthViewController.storyboard */; };
 		566FCB31281B0F3D00219F8F /* FeedViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 566FCB30281B0F3D00219F8F /* FeedViewController.storyboard */; };
 		566FCB33281B0F6700219F8F /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566FCB32281B0F6700219F8F /* FeedViewController.swift */; };
+		566FCB37282144CC00219F8F /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566FCB36282144CC00219F8F /* NetworkService.swift */; };
+		566FCB392821453100219F8F /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566FCB382821453100219F8F /* API.swift */; };
 		92FC733CB3D5806B39E4E95D /* Pods_VkNewsFeed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 610477C913BBFBC7F4A3689F /* Pods_VkNewsFeed.framework */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +35,8 @@
 		566FCB2C281B078B00219F8F /* AuthViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AuthViewController.storyboard; sourceTree = "<group>"; };
 		566FCB30281B0F3D00219F8F /* FeedViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FeedViewController.storyboard; sourceTree = "<group>"; };
 		566FCB32281B0F6700219F8F /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
+		566FCB36282144CC00219F8F /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		566FCB382821453100219F8F /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		610477C913BBFBC7F4A3689F /* Pods_VkNewsFeed.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VkNewsFeed.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -93,6 +97,8 @@
 			isa = PBXGroup;
 			children = (
 				566FCB29281B052800219F8F /* AuthService.swift */,
+				566FCB36282144CC00219F8F /* NetworkService.swift */,
+				566FCB382821453100219F8F /* API.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -244,7 +250,9 @@
 				566FCB16281AFB4700219F8F /* AppDelegate.swift in Sources */,
 				566FCB33281B0F6700219F8F /* FeedViewController.swift in Sources */,
 				566FCB18281AFB4700219F8F /* SceneDelegate.swift in Sources */,
+				566FCB37282144CC00219F8F /* NetworkService.swift in Sources */,
 				566FCB2A281B052800219F8F /* AuthService.swift in Sources */,
+				566FCB392821453100219F8F /* API.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

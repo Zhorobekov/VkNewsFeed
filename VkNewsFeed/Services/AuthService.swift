@@ -29,6 +29,10 @@ class AuthService: NSObject, VKSdkDelegate, VKSdkUIDelegate {
     
     weak var delegate: AuthServiceDelegate?
     
+    var token: String? {
+        return VKSdk.accessToken().accessToken
+    }
+    
     func vkSdkAccessAuthorizationFinished(with result: VKAuthorizationResult!) {
         if result.token != nil {            
             delegate?.authServiceSignIn()
@@ -51,7 +55,7 @@ class AuthService: NSObject, VKSdkDelegate, VKSdkUIDelegate {
     }
     
     func wakeUpSession() {
-        let scope = ["offline"]
+        let scope = ["offline,wall,friends"]
         VKSdk.wakeUpSession(scope) { [delegate] state, error in
             switch state {
             case .initialized:
