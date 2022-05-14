@@ -8,53 +8,72 @@
 
 import UIKit
 
-protocol NewsFeedDisplayLogic: class {
-  func displayData(viewModel: NewsFeed.Model.ViewModel.ViewModelData)
+protocol NewsFeedDisplayLogic: AnyObject {
+    func displayData(viewModel: NewsFeed.Model.ViewModel.ViewModelData)
 }
 
 class NewsFeedViewController: UIViewController, NewsFeedDisplayLogic {
+    
+    var interactor: NewsFeedBusinessLogic?
+    var router: (NSObjectProtocol & NewsFeedRoutingLogic)?
+    
+    @IBOutlet weak var feedsTableView: UITableView!
+    
+    // MARK: Setup
+    
+    private func setup() {
+        let viewController        = self
+        let interactor            = NewsFeedInteractor()
+        let presenter             = NewsFeedPresenter()
+        let router                = NewsFeedRouter()
+        viewController.interactor = interactor
+        viewController.router     = router
+        interactor.presenter      = presenter
+        presenter.viewController  = viewController
+        router.viewController     = viewController
+    }
+    
+    // MARK: Routing
+    
+    
+    
+    // MARK: View lifecycle
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setup()
+        feedsTableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+    }
+    
+    func displayData(viewModel: NewsFeed.Model.ViewModel.ViewModelData) {
+        
+        switch viewModel {
+            
+        case .some:
+            print("some.ViewController")
+        case .displayNewsFeed:
+            print("displayNewsFeedViewContoller ")
+        }
+        
+    }
+    
+}
 
-  var interactor: NewsFeedBusinessLogic?
-  var router: (NSObjectProtocol & NewsFeedRoutingLogic)?
-
-  // MARK: Object lifecycle
-  
-  override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-    super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-    setup()
-  }
-  
-  required init?(coder aDecoder: NSCoder) {
-    super.init(coder: aDecoder)
-    setup()
-  }
-  
-  // MARK: Setup
-  
-  private func setup() {
-    let viewController        = self
-    let interactor            = NewsFeedInteractor()
-    let presenter             = NewsFeedPresenter()
-    let router                = NewsFeedRouter()
-    viewController.interactor = interactor
-    viewController.router     = router
-    interactor.presenter      = presenter
-    presenter.viewController  = viewController
-    router.viewController     = viewController
-  }
-  
-  // MARK: Routing
-  
-
-  
-  // MARK: View lifecycle
-  
-  override func viewDidLoad() {
-    super.viewDidLoad()
-  }
-  
-  func displayData(viewModel: NewsFeed.Model.ViewModel.ViewModelData) {
-
-  }
-  
+extension NewsFeedViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        5
+    }
+    
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell")!
+        cell.textLabel?.text = "index: \(indexPath.row)"
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("\(indexPath.row)")
+        interactor?.makeRequest(request: .getFeed)
+    }
+    
 }

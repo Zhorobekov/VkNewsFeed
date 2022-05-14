@@ -17,6 +17,15 @@ class NewsFeedPresenter: NewsFeedPresentationLogic {
   
   func presentData(response: NewsFeed.Model.Response.ResponseType) {
   
+      switch response {
+          
+      case .some:
+          print("some presenter")
+      case .presentNewsFeed:
+          print("peresenter NewsFeed")
+          viewController?.displayData(viewModel: .displayNewsFeed)
+      }
+      
   }
   
 }
