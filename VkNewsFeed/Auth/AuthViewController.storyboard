@@ -18,9 +18,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yXQ-iB-UOp">
-                                <rect key="frame" x="157.5" y="432.5" width="99" height="31"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Войти в ВК"/>
+                                <rect key="frame" x="167" y="433" width="80" height="30"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Войти в ВК"/>
                                 <connections>
                                     <action selector="signInTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="nUe-Jl-U32"/>
                                 </connections>
