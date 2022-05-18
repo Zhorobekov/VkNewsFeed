@@ -28,10 +28,10 @@ class NewsFeedPresenter: NewsFeedPresentationLogic {
     func presentData(response: NewsFeed.Model.Response.ResponseType) {
         
         switch response {
-        case .presentNewsFeed(feed: let feed):
+        case .presentNewsFeed(feed: let feed, let revealedPostIds):
             
             let cells = feed.items.map { feedItem in
-                cellViewModel(from: feedItem, profiles: feed.profiles, groups: feed.groups)
+                cellViewModel(from: feedItem, profiles: feed.profiles, groups: feed.groups, revealedPostIds: revealedPostIds)
             }
             
             let feedViewModel = FeedViewModel.init(cells: cells)
@@ -41,7 +41,7 @@ class NewsFeedPresenter: NewsFeedPresentationLogic {
         
     }
     
-    private func cellViewModel(from feedItem: FeedItem, profiles: [Profile], groups: [Group]) -> FeedViewModel.Cell {
+    private func cellViewModel(from feedItem: FeedItem, profiles: [Profile], groups: [Group], revealedPostIds: [Int]) -> FeedViewModel.Cell {
         
         let profile = self.profile(sourceId: feedItem.sourceId, profiles: profiles, groups: groups)!
         let photoAttachment = photoAttachment(feedItem: feedItem)
@@ -49,9 +49,17 @@ class NewsFeedPresenter: NewsFeedPresentationLogic {
         let date = Date(timeIntervalSince1970: feedItem.date)
         let dateTitle = dateFormatter.string(from: date)
         
-        let sizes = cellLayoutCalculator.sizes(postText: feedItem.text, photoAttachment: photoAttachment)
+//        let isFullSized = revealedPostIds.contains { postId -> Bool in
+//            return postId == feedItem.postId
+//        }
+        
+        let isFullSized = revealedPostIds.contains(feedItem.postId)
+         
+        
+        let sizes = cellLayoutCalculator.sizes(postText: feedItem.text, photoAttachment: photoAttachment, isFullSized: isFullSized)
             
         return FeedViewModel.Cell.init(
+            postId: feedItem.postId,
             iconUrlString: profile.photo,
             name: profile.name,
             date: dateTitle,

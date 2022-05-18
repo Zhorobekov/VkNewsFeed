@@ -66,6 +66,10 @@ class NewsFeedViewController: UIViewController, NewsFeedDisplayLogic, NewsFeedCo
     //MARK: NewsFeedCodeCellDelegate
     
     func revealPost(for cell: NewsFeedCodeCell) {
+        guard let indexPath = feedsTableView.indexPath(for: cell) else { return }
+        let cellViewModel = feedViewModel.cells[indexPath.row]
+        
+        interactor?.makeRequest(request: .revealPostIds(postId: cellViewModel.postId))
         
     }
     

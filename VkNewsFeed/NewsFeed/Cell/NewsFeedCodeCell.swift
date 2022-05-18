@@ -192,7 +192,6 @@ final class NewsFeedCodeCell: UITableViewCell {
         iconImageView.layer.cornerRadius = Constants.topViewHeight / 2
         iconImageView.clipsToBounds = true
         
-        
         backgroundColor = .clear
         selectionStyle = .none
         
@@ -218,7 +217,7 @@ final class NewsFeedCodeCell: UITableViewCell {
         postImageView.set(imageUrl: nil)
     }
     
-    @objc private func moreTextButtonPressed() {
+    @objc func moreTextButtonPressed() {
         delegate?.revealPost(for: self)
     }
     
@@ -341,7 +340,7 @@ final class NewsFeedCodeCell: UITableViewCell {
     }
     
     private func overlayFirstLayer() {
-        addSubview(cardView)
+        contentView.addSubview(cardView)
         
         //carView constraints
         cardView.fillSuperview(padding: Constants.cardInsets)
