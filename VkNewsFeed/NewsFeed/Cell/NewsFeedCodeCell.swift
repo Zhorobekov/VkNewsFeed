@@ -50,6 +50,8 @@ final class NewsFeedCodeCell: UITableViewCell {
         return button
     }()
     
+    let galleryCollectionView = GalleryCollectionView()
+    
     let postImageView: WebImageView = {
         let imageView = WebImageView()
         imageView.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
@@ -148,7 +150,7 @@ final class NewsFeedCodeCell: UITableViewCell {
     }()
     
     let likesLabel: UILabel = {
-       let label = UILabel()
+        let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = #colorLiteral(red: 0.5058823529, green: 0.5490196078, blue: 0.6, alpha: 1)
         label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
@@ -158,7 +160,7 @@ final class NewsFeedCodeCell: UITableViewCell {
     }()
     
     let commentsLabel: UILabel = {
-       let label = UILabel()
+        let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = #colorLiteral(red: 0.5058823529, green: 0.5490196078, blue: 0.6, alpha: 1)
         label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
@@ -167,7 +169,7 @@ final class NewsFeedCodeCell: UITableViewCell {
     }()
     
     let sharesLabel: UILabel = {
-       let label = UILabel()
+        let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = #colorLiteral(red: 0.5058823529, green: 0.5490196078, blue: 0.6, alpha: 1)
         label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
@@ -176,7 +178,7 @@ final class NewsFeedCodeCell: UITableViewCell {
     }()
     
     let viewsLabel: UILabel = {
-       let label = UILabel()
+        let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = #colorLiteral(red: 0.5058823529, green: 0.5490196078, blue: 0.6, alpha: 1)
         label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
@@ -253,7 +255,7 @@ final class NewsFeedCodeCell: UITableViewCell {
             label.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ])
         
-       
+        
     }
     
     private func overlayThirdLayerOnBottomView() {
@@ -285,10 +287,10 @@ final class NewsFeedCodeCell: UITableViewCell {
         
         //viewsView constraints
         viewsView.anchor(top: bottomView.topAnchor,
-                          leading: nil,
-                          bottom: nil,
-                          trailing: bottomView.trailingAnchor,
-                          size: CGSize(width: Constants.bottomViewViewWidth, height: Constants.bottomViewViewHeight))
+                         leading: nil,
+                         bottom: nil,
+                         trailing: bottomView.trailingAnchor,
+                         size: CGSize(width: Constants.bottomViewViewWidth, height: Constants.bottomViewViewHeight))
     }
     
     private func overlayThirdLayerOnTopView() {
@@ -328,6 +330,7 @@ final class NewsFeedCodeCell: UITableViewCell {
         cardView.addSubview(postLabel)
         cardView.addSubview(moreTextButton)
         cardView.addSubview(postImageView)
+        cardView.addSubview(galleryCollectionView)
         cardView.addSubview(bottomView)
         
         //topView constraints
@@ -359,16 +362,24 @@ final class NewsFeedCodeCell: UITableViewCell {
         
         bottomView.frame = viewModel.sizes.bottomViewFrame
         postLabel.frame = viewModel.sizes.postLabelFrame
-        postImageView.frame = viewModel.sizes.attachmentFrame
         moreTextButton.frame = viewModel.sizes.moreTextButtonFrame
         
-        if let photoAttachment = viewModel.photoAttachment {
+        
+        if let photoAttachment = viewModel.photoAttachments.first, viewModel.photoAttachments.count == 1 {
             postImageView.set(imageUrl: photoAttachment.photoUrlString)
             postImageView.isHidden = false
-            
+            galleryCollectionView.isHidden = true
+            postImageView.frame = viewModel.sizes.attachmentFrame
+        } else if viewModel.photoAttachments.count > 1 {
+            galleryCollectionView.frame = viewModel.sizes.attachmentFrame
+            postImageView.isHidden = true
+            galleryCollectionView.isHidden = false
+            galleryCollectionView.set(photos: viewModel.photoAttachments)
         } else {
             postImageView.isHidden = true
+            galleryCollectionView.isHidden = true
         }
+        
     }
     
     required init?(coder: NSCoder) {
