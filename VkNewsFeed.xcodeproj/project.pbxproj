@@ -35,6 +35,7 @@
 		56D33847282E3F1900C5CC94 /* NewsFeedModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D33840282E3F1900C5CC94 /* NewsFeedModels.swift */; };
 		56D33848282E3F1900C5CC94 /* NewsFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D33841282E3F1900C5CC94 /* NewsFeedViewController.swift */; };
 		56D33849282E3F1900C5CC94 /* NewsFeedInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D33842282E3F1900C5CC94 /* NewsFeedInteractor.swift */; };
+		56DD3A31283769F8000F5503 /* RowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DD3A30283769F8000F5503 /* RowLayout.swift */; };
 		92FC733CB3D5806B39E4E95D /* Pods_VkNewsFeed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 610477C913BBFBC7F4A3689F /* Pods_VkNewsFeed.framework */; };
 /* End PBXBuildFile section */
 
@@ -71,6 +72,7 @@
 		56D33840282E3F1900C5CC94 /* NewsFeedModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeedModels.swift; sourceTree = "<group>"; };
 		56D33841282E3F1900C5CC94 /* NewsFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeedViewController.swift; sourceTree = "<group>"; };
 		56D33842282E3F1900C5CC94 /* NewsFeedInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeedInteractor.swift; sourceTree = "<group>"; };
+		56DD3A30283769F8000F5503 /* RowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowLayout.swift; sourceTree = "<group>"; };
 		610477C913BBFBC7F4A3689F /* Pods_VkNewsFeed.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VkNewsFeed.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -99,6 +101,7 @@
 			children = (
 				565627702836B14A00A8473B /* GalleryCollectionView.swift */,
 				565627722836B25400A8473B /* GalleryCollectionViewCell.swift */,
+				56DD3A30283769F8000F5503 /* RowLayout.swift */,
 			);
 			path = GalleryView;
 			sourceTree = "<group>";
@@ -330,6 +333,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56DD3A31283769F8000F5503 /* RowLayout.swift in Sources */,
 				56D33839282E2BD200C5CC94 /* FeedResponse.swift in Sources */,
 				56D33844282E3F1900C5CC94 /* NewsFeedPresenter.swift in Sources */,
 				56D0FE45283267AB007FDF33 /* NewsFeedCodeCell.swift in Sources */,

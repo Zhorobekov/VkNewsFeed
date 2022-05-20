@@ -77,17 +77,6 @@ final class FeedCellLayoutCalculator: FeedCellLayoutCalculatorProtocol {
             size: CGSize.zero
         )
         
-        //        if let photoAttachments = photoAttachments {
-        //
-        //
-        //            let photoHeight: Float = Float(photoAttachment.height)
-        //            let photoWidth: Float = Float(photoAttachment.width)
-        //
-        //            let ratio = CGFloat(photoHeight / photoWidth)
-        //
-        //            attachmentFrame.size = CGSize(width: cardViewWidth, height: cardViewWidth * ratio)
-        //        }
-        
         if let photoAttachment = photoAttachments.first {
             let photoHeight: Float = Float(photoAttachment.height)
             let photoWidth: Float = Float(photoAttachment.width)
@@ -96,7 +85,14 @@ final class FeedCellLayoutCalculator: FeedCellLayoutCalculatorProtocol {
             if photoAttachments.count == 1 {
                 attachmentFrame.size = CGSize(width: cardViewWidth, height: cardViewWidth * ratio)
             } else if photoAttachments.count > 1 {
-                attachmentFrame.size = CGSize(width: cardViewWidth, height: cardViewWidth * ratio)
+                var photos: [CGSize] = []
+                for photo in photoAttachments {
+                    let photoSize = CGSize(width: photo.width, height: photo.height)
+                    photos.append(photoSize)
+                }
+                
+                let rowHeight = RowLayout.rowHeightCounter(superViewWidth: cardViewWidth, photosArray: photos)
+                attachmentFrame.size = CGSize(width: cardViewWidth, height: rowHeight!)
             }
         }
         
