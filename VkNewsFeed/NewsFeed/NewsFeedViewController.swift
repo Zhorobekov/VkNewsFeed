@@ -16,10 +16,20 @@ class NewsFeedViewController: UIViewController, NewsFeedDisplayLogic, NewsFeedCo
     
     var interactor: NewsFeedBusinessLogic?
     var router: (NSObjectProtocol & NewsFeedRoutingLogic)?
-    private var feedViewModel = FeedViewModel(cells: [])
+      
+    @IBOutlet weak var feedsTableView: UITableView!
+    
+    private var feedViewModel = FeedViewModel(cells: [], footerTitle: nil)
+    
     private var titleView = TitleView()
     
-    @IBOutlet weak var feedsTableView: UITableView!
+    private lazy var footerView = FooterView()
+    
+    private var refreshControl: UIRefreshControl = {
+       let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        return refreshControl
+    }()
     
     // MARK: Setup
     
@@ -45,34 +55,73 @@ class NewsFeedViewController: UIViewController, NewsFeedDisplayLogic, NewsFeedCo
         super.viewDidLoad()
         setup()
         setUpTopBars()
-        feedsTableView.register(UINib(nibName: "NewsFeedCell", bundle: nil), forCellReuseIdentifier: NewsFeedCell.reuseId)
-        feedsTableView.register(NewsFeedCodeCell.self, forCellReuseIdentifier: NewsFeedCodeCell.reuseId)
-        
-        feedsTableView.separatorStyle = .none
-        feedsTableView.backgroundColor = .clear
-        view.backgroundColor = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)
+        setUpFeedsTableView()
         
         interactor?.makeRequest(request: .getNewsFeed)
         interactor?.makeRequest(request: .getUser)
     }
     
+    
+    func displayData(viewModel: NewsFeed.Model.ViewModel.ViewModelData) {
+        
+        switch viewModel {
+        case .displayNewsFeed(let feedViewModel):
+            self.feedViewModel = feedViewModel
+            feedsTableView.reloadData()
+            refreshControl.endRefreshing()
+            footerView.setTitle(feedViewModel.footerTitle)
+       
+        case .displayUser(userViewModel: let userViewModel):
+            titleView.set(userViewModel: userViewModel)
+      
+        case .displayFooterLoader:
+            footerView.showLoader()
+        }
+    }
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if scrollView.contentOffset.y > scrollView.contentSize.height / 1.1 {
+            interactor?.makeRequest(request: .getNextBatch)
+        }
+    }
+
     private func setUpTopBars() {
-        self.navigationController?.hidesBarsOnSwipe = true
+        
+        if let statusBarFrame = view.window?.windowScene?.statusBarManager?.statusBarFrame {
+            let topBar = UIView(frame: statusBarFrame)
+            self.view.addSubview(topBar)
+            topBar.backgroundColor = .white
+            topBar.layer.shadowColor = UIColor.black.cgColor
+            topBar.layer.shadowOpacity = 0.3
+            topBar.layer.shadowOffset = CGSize.zero
+            topBar.layer.shadowRadius = 8
+        }
+        
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationItem.titleView = titleView
         
     }
     
-    func displayData(viewModel: NewsFeed.Model.ViewModel.ViewModelData) {
+    private func setUpFeedsTableView() {
         
-        switch viewModel {
-        case .displayNewsFeed(let feedViewMode):
-            print("//")
-            self.feedViewModel = feedViewMode
-            feedsTableView.reloadData()
-        case .displayUser(userViewModel: let userViewModel):
-            titleView.set(userViewModel: userViewModel)
-        }
+        let topInset: CGFloat = 8
+        
+        feedsTableView.contentInset.top = topInset
+        
+        feedsTableView.register(UINib(nibName: "NewsFeedCell", bundle: nil), forCellReuseIdentifier: NewsFeedCell.reuseId)
+        feedsTableView.register(NewsFeedCodeCell.self, forCellReuseIdentifier: NewsFeedCodeCell.reuseId)
+        
+        feedsTableView.separatorStyle = .none
+        feedsTableView.backgroundColor = .clear
+        
+        feedsTableView.tableFooterView = footerView
+        
+        feedsTableView.addSubview(refreshControl)
+    }
+    
+    @objc private func refresh() {
+        interactor?.makeRequest(request: .getNewsFeed)
+
     }
     
     //MARK: NewsFeedCodeCellDelegate

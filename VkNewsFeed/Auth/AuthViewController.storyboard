@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
@@ -14,13 +14,31 @@
             <objects>
                 <viewController id="Y6W-OH-hqX" customClass="AuthViewController" customModule="VkNewsFeed" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QUO-bk-lgk" customClass="GradientView" customModule="VkNewsFeed" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                                        <color key="value" red="0.0" green="0.36862745099999999" blue="0.55294117649999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                                        <color key="value" red="0.0" green="0.36862745099999999" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yXQ-iB-UOp">
-                                <rect key="frame" x="167" y="433" width="80" height="30"/>
+                                <rect key="frame" x="88" y="256.5" width="144" height="55"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="144" id="eJu-vH-WoC"/>
+                                    <constraint firstAttribute="height" constant="55" id="q0S-Cm-XzQ"/>
+                                </constraints>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="Войти в ВК"/>
+                                <state key="normal" title="Войти в ВК">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="signInTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="nUe-Jl-U32"/>
                                 </connections>
@@ -29,14 +47,21 @@
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="QUO-bk-lgk" secondAttribute="trailing" id="09J-lp-Vku"/>
+                            <constraint firstItem="QUO-bk-lgk" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="0Fm-3h-Umw"/>
                             <constraint firstItem="yXQ-iB-UOp" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="HSt-Sc-Gne"/>
                             <constraint firstItem="yXQ-iB-UOp" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="JWL-Yg-KRY"/>
+                            <constraint firstAttribute="bottom" secondItem="QUO-bk-lgk" secondAttribute="bottom" id="N0c-0U-jQv"/>
+                            <constraint firstItem="QUO-bk-lgk" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="va8-lZ-KVS"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="enterButton" destination="yXQ-iB-UOp" id="BX8-Po-O5j"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="44.927536231884062" y="83.705357142857139"/>
+            <point key="canvasLocation" x="43.125" y="83.450704225352112"/>
         </scene>
     </scenes>
     <resources>
