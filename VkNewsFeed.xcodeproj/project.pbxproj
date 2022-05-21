@@ -148,17 +148,13 @@
 		566FCB14281AFB4700219F8F /* VkNewsFeed */ = {
 			isa = PBXGroup;
 			children = (
-				56C3756D283918C500C435BC /* Views */,
-				56D0FE3D28320FFC007FDF33 /* Helpers */,
-				566FCB15281AFB4700219F8F /* AppDelegate.swift */,
-				566FCB17281AFB4700219F8F /* SceneDelegate.swift */,
 				56D3383C282E3EBA00C5CC94 /* NewsFeed */,
 				566FCB2B281B052D00219F8F /* Services */,
+				56D0FE3D28320FFC007FDF33 /* Helpers */,
+				56C3756D283918C500C435BC /* Views */,
 				566FCB35281B0FD300219F8F /* Auth */,
-				566FCB1E281AFB4800219F8F /* Assets.xcassets */,
-				566FCB20281AFB4800219F8F /* LaunchScreen.storyboard */,
-				566FCB23281AFB4800219F8F /* Info.plist */,
-				56C3756928390DF300C435BC /* Localizable.stringsdict */,
+				56C3756F283923E600C435BC /* App */,
+				56C3756E283923D300C435BC /* Resourses */,
 			);
 			path = VkNewsFeed;
 			sourceTree = "<group>";
@@ -199,6 +195,26 @@
 				56C3756B283911B800C435BC /* GradientView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		56C3756E283923D300C435BC /* Resourses */ = {
+			isa = PBXGroup;
+			children = (
+				566FCB1E281AFB4800219F8F /* Assets.xcassets */,
+			);
+			path = Resourses;
+			sourceTree = "<group>";
+		};
+		56C3756F283923E600C435BC /* App */ = {
+			isa = PBXGroup;
+			children = (
+				566FCB15281AFB4700219F8F /* AppDelegate.swift */,
+				566FCB17281AFB4700219F8F /* SceneDelegate.swift */,
+				566FCB20281AFB4800219F8F /* LaunchScreen.storyboard */,
+				566FCB23281AFB4800219F8F /* Info.plist */,
+				56C3756928390DF300C435BC /* Localizable.stringsdict */,
+			);
+			path = App;
 			sourceTree = "<group>";
 		};
 		56C84A9A282F9E1F002BD9CA /* Cell */ = {
@@ -548,7 +564,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 429329GWZV;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = VkNewsFeed/Info.plist;
+				INFOPLIST_FILE = VkNewsFeed/App/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -578,7 +594,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 429329GWZV;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = VkNewsFeed/Info.plist;
+				INFOPLIST_FILE = VkNewsFeed/App/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;

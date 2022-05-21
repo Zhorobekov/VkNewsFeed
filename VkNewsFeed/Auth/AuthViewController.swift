@@ -19,8 +19,7 @@ class AuthViewController: UIViewController {
         enterButton.layer.borderColor = .init(red: 1, green: 1, blue: 1, alpha: 1)
         enterButton.layer.borderWidth = 2
         enterButton.layer.cornerRadius = 10
-        enterButton.layer
-        
+    
     }
 
     @IBAction func signInTapped(_ sender: UIButton) {
