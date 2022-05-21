@@ -33,6 +33,10 @@ class AuthService: NSObject, VKSdkDelegate, VKSdkUIDelegate {
         return VKSdk.accessToken().accessToken
     }
     
+    var userId: String? {
+        return VKSdk.accessToken().userId 
+    }
+    
     func vkSdkAccessAuthorizationFinished(with result: VKAuthorizationResult!) {
         if result.token != nil {            
             delegate?.authServiceSignIn()
